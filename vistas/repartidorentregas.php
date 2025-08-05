@@ -26,6 +26,7 @@
 
     <style>
       :root {
+        /* Tus colores originales se mantienen intactos */
         --azul-principal: #007bff;
         --azul-oscuro: #0056b3;
         --gris-fondo: #eef2f7;
@@ -37,7 +38,7 @@
       body {
         background-color: var(--gris-fondo);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        padding: 40px 20px;
+        padding: 20px; /* Reducido */
         color: var(--texto-principal);
         min-height: 100vh;
       }
@@ -46,9 +47,10 @@
         color: var(--azul-principal);
         text-align: center;
         font-weight: 700;
-        margin-bottom: 40px;
+        margin-bottom: 25px; /* Reducido */
         text-transform: uppercase;
-        letter-spacing: 1.2px;
+        letter-spacing: 1px; /* Reducido */
+        font-size: 1.7rem; /* Reducido */
         text-shadow: 0 1px 3px rgba(0, 123, 255, 0.3);
         user-select: none;
       }
@@ -58,32 +60,31 @@
       box-shadow: 0 4px 18px #2193b030;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(6px);
-      border-radius: 16px;
-      padding: 18px 18px;
-      margin-bottom: 24px;
+      border-radius: 12px; /* Reducido */
+      padding: 15px; /* Reducido */
+      margin-bottom: 20px; /* Reducido */
     }
     #tablaPedidos {
-      border-radius: 12px;
+      border-radius: 10px; /* Reducido */
       overflow: hidden;
       background: rgba(255,255,255,0.98);
       box-shadow: 0 2px 12px #2193b030;
       width: 100% !important;
     }
     #tablaPedidos thead th {
-      font-weight: 800;
-      font-size: 1.08rem;
+      font-weight: 700; /* Ligeramente reducido */
+      font-size: 0.9rem; /* Reducido */
       background: linear-gradient(90deg,#2193b0 0%,#6dd5ed 100%);
       color: #fff;
       border: none;
       letter-spacing: 0.5px;
-      text-shadow: 0 2px 8px #2193b080;
+      text-shadow: 0 1px 4px #2193b080; /* Reducido */
       text-align: center;
-      padding: 14px 12px;
+      padding: 10px 8px; /* Reducido */
       user-select: none;
     }
     #tablaPedidos tbody tr {
       background: #f6fbff;
-      border-radius: 12px;
       transition: background-color 0.3s;
       cursor: pointer;
     }
@@ -94,9 +95,9 @@
     #tablaPedidos tbody td {
       vertical-align: middle !important;
       text-align: center;
-      padding: 14px 12px;
+      padding: 10px 8px; /* Reducido */
       font-weight: 500;
-      border-radius: 8px;
+      font-size: 0.95rem; /* Añadido para controlar tamaño */
       border-top: none;
       color: #222;
       background: transparent;
@@ -105,10 +106,10 @@
 
       /* Pagination & info */
       .dataTables_wrapper .dataTables_paginate .paginate_button {
-        padding: 6px 12px;
+        padding: 5px 11px; /* Reducido */
         margin-left: 2px;
         border-radius: 6px;
-        border: 1.5px solid var(--azul-principal);
+        border: 1px solid var(--azul-principal); /* Reducido grosor */
         color: var(--azul-principal) !important;
         background: transparent !important;
         transition: all 0.3s ease;
@@ -118,88 +119,82 @@
       .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
         background: var(--azul-principal) !important;
         color: var(--blanco) !important;
-        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3); /* Reducido */
       }
 
       /* Search box */
       .dataTables_filter input {
         border-radius: 20px !important;
-        border: 1.5px solid var(--azul-principal) !important;
-        padding: 6px 15px !important;
-        width: 200px !important;
+        border: 1px solid var(--azul-principal) !important; /* Reducido grosor */
+        padding: 5px 12px !important; /* Reducido */
+        width: 180px !important; /* Reducido */
         transition: border-color 0.3s ease !important;
       }
       .dataTables_filter input:focus {
         border-color: var(--azul-oscuro) !important;
-        box-shadow: 0 0 8px rgba(0, 86, 179, 0.4) !important;
+        box-shadow: 0 0 6px rgba(0, 86, 179, 0.4) !important; /* Reducido */
         outline: none !important;
       }
 
       /* Responsive adjustments */
       @media (max-width: 768px) {
-        .table-container {
-          padding: 15px 15px;
+        body {
+            padding: 10px;
+        }
+        .glass-table {
+          padding: 10px;
         }
         h2 {
-          font-size: 1.8rem;
-          margin-bottom: 30px;
+          font-size: 1.5rem;
+          margin-bottom: 20px;
         }
         .dataTables_filter input {
           width: 100% !important;
         }
       }
 
-      /* Botón ver mapa */
-      .btn-ver-mapa {
-        background: linear-gradient(90deg,#2193b0,#6dd5ed);
+      /* Botones de acción (Mapa y Entregar) */
+      .btn-ver-mapa, .btn-entregar {
+        padding: 7px 18px; /* Reducido */
+        border-radius: 20px; /* Reducido */
+        font-weight: 700; /* Reducido */
+        font-size: 0.85rem; /* Reducido */
+        letter-spacing: 0.5px; /* Reducido */
         border: none;
         color: #fff;
-        padding: 11px 28px;
-        border-radius: 30px;
-        font-weight: 800;
-        font-size: 1.08rem;
-        letter-spacing: 1px;
-        text-shadow: 0 2px 8px #2193b080;
-        box-shadow: 0 8px 22px #2193b060;
         transition: background 0.3s, box-shadow 0.3s, color 0.3s;
         user-select: none;
         white-space: nowrap;
-        margin-right: 8px;
         display: inline-flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px; /* Reducido */
+      }
+      
+      .btn-ver-mapa {
+        background: linear-gradient(90deg,#2193b0,#6dd5ed);
+        text-shadow: 0 1px 4px #2193b080; /* Reducido */
+        box-shadow: 0 6px 18px #2193b060; /* Reducido */
+        margin-right: 8px;
       }
       .btn-ver-mapa:hover,
       .btn-ver-mapa:focus {
         background: linear-gradient(90deg,#6dd5ed,#2193b0);
-        box-shadow: 0 12px 32px #2193b080;
-        color: #2193b0;
+        box-shadow: 0 8px 25px #2193b080; /* Reducido */
+        color: #fff; /* Se cambió para que no desaparezca el texto */
         outline: none;
         text-decoration: none;
       }
 
       .btn-entregar {
         background: linear-gradient(90deg,#43ea7b,#2dbd6e,#43ea7b);
-        border: none;
-        color: #fff;
-        font-weight: 800;
-        padding: 11px 28px;
-        border-radius: 30px;
-        box-shadow: 0 8px 22px #43ea7b60;
-        font-size: 1.08rem;
-        letter-spacing: 1px;
-        text-shadow: 0 2px 8px #2dbd6e80;
-        transition: background 0.3s, box-shadow 0.3s, color 0.3s;
-        user-select: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
+        text-shadow: 0 1px 4px #2dbd6e80; /* Reducido */
+        box-shadow: 0 6px 18px #43ea7b60; /* Reducido */
       }
       .btn-entregar:hover,
       .btn-entregar:focus {
         background: linear-gradient(90deg,#2dbd6e,#43ea7b,#2dbd6e);
-        box-shadow: 0 12px 32px #2dbd6e80;
-        color: #2193b0;
+        box-shadow: 0 8px 25px #2dbd6e80; /* Reducido */
+        color: #fff; /* Se cambió para que no desaparezca el texto */
         outline: none;
         text-decoration: none;
       }
@@ -207,36 +202,19 @@
       /* Modal styles */
       #map {
         width: 100%;
-        height: 450px;
-        border-radius: 12px;
+        height: 400px; /* Reducido */
+        border-radius: 10px; /* Reducido */
         border: 1px solid #ddd;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Reducido */
         user-select: none;
       }
       .modal-title {
-        font-weight: 700;
+        font-weight: 600; /* Reducido */
         color: var(--azul-principal);
         letter-spacing: 0.5px;
         user-select: none;
       }
-      .btn-entregar {
-  background-color: #1df933ff; /* verde fosforescente claro */
-  color: #222;
-  font-weight: 600;
-  box-shadow: 0 4px 10px rgba(127, 255, 0, 0.6);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-entregar:hover,
-.btn-entregar:focus {
-  background-color: #53c606ff; /* un verde más brillante al pasar el mouse */
-  box-shadow: 0 6px 20px rgba(161, 255, 58, 0.8);
-  color: #111;
-  outline: none;
-  text-decoration: none;
-}
-
-    </style>
+</style>
   </head>
   <body>
 

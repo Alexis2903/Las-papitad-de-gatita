@@ -49,7 +49,7 @@ $id_cliente = $_SESSION['id_usuario'];
 
 .productos-wrapper h2 {
   margin-bottom: 12px;
-  color: #1976d2;
+  color: #0c0c0cff;
   font-weight: 700;
   font-size: 1.3rem;
 }
@@ -169,7 +169,7 @@ $id_cliente = $_SESSION['id_usuario'];
 
 .carrito-container {
   width: 220px;
-  background: #f1f7ff;
+  background: #ffffffff;
   border: 1.2px solid #1976d2;
   border-radius: 12px;
   padding: 14px 10px;
@@ -299,7 +299,7 @@ $id_cliente = $_SESSION['id_usuario'];
 }
 
 #listaEventos::-webkit-scrollbar-track {
-  background: #f0f8ff;
+  background: #f8f8f8ff;
   border-radius: 3px;
 }
 
@@ -314,7 +314,7 @@ $id_cliente = $_SESSION['id_usuario'];
   padding: 8px 10px !important;
   border: 1.2px solid #2193b0 !important;
   border-radius: 10px !important;
-  background-color: #f0f8ff !important;
+  background-color: #fafbfcff !important;
   cursor: pointer !important;
   box-shadow: 0 2px 10px rgba(33,147,176,0.15) !important;
   transition: box-shadow 0.3s ease !important;
@@ -322,12 +322,12 @@ $id_cliente = $_SESSION['id_usuario'];
 }
 
 .evento-card:hover {
-  box-shadow: 0 4px 16px rgba(33,147,176,0.3) !important;
+  box-shadow: 0 4px 16px rgba(29, 34, 35, 0.3) !important;
 }
 
 .evento-card h4 {
   font-size: 0.9rem !important;
-  color: #2193b0 !important;
+  color: #010d10ff !important;
   margin-bottom: 6px !important;
 }
 

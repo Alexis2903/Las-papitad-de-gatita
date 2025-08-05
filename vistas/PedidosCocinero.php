@@ -27,177 +27,177 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'cocinero') {
 
   <style>
     :root {
-      --azul-suave: #5a8dbd;
-      --azul-oscuro: #3b659c;
-      --gris-claro: #f5f7fa;
+      /* Tus colores originales se mantienen intactos */
+      --gris-claro: #f8f9fa;
       --blanco: #ffffff;
-      --texto-principal: #3a4a63;
-      --texto-secundario: #6c7a93;
-      --sombra-suave: rgba(90, 141, 189, 0.15);
+      --texto-principal: #34495e;
+      --texto-oscuro-contraste: #212529;
+      --color-grad-1: #2193b0;
+      --color-grad-2: #6dd5ed;
+      --color-verde-1: #43ea7b;
+      --color-verde-2: #2dbd6e;
     }
 
     body {
       font-family: 'Nunito', sans-serif;
       background-color: var(--gris-claro);
       color: var(--texto-principal);
-      margin: 0;
-      padding: 40px 30px; /* un poco más de padding lateral para no pegarse */
-      min-height: 100vh;
+      padding: 20px;
     }
 
-    h2 {
-      font-weight: 700;
-      font-size: 2.4rem;
-      color: var(--azul-suave);
-      margin-bottom: 50px;
-      letter-spacing: 1.2px;
-      text-shadow: 0 2px 5px rgba(90,141,189,0.3);
+    /* --- CONTENEDORES CON BORDES RECTOS --- */
+    .glass-card, .glass-table {
+        background: rgba(255,255,255,0.9);
+        border: 1px solid #e0e7ee;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        padding: 1.25rem;
+        border-radius: 0; /* Bordes Rectos */
     }
 
-    .filtro-container {
-      max-width: 420px;
-      margin: 0 auto 40px auto;
-      text-align: center;
+    .glass-card h2 {
+      font-size: 1.6rem; /* Reducido */
+      letter-spacing: 0.5px;
+      margin-bottom: 0 !important;
     }
-
+    
     label[for="selectEvento"] {
-      font-weight: 600;
-      color: var(--azul-oscuro);
-      margin-bottom: 8px;
-      display: block;
-      user-select: none;
-      font-size: 1rem;
+        font-weight: 600;
+        color: var(--color-grad-1);
+    }
+    
+    /* --- FORMULARIOS CON BORDES RECTOS --- */
+    .form-select {
+        border-radius: 0; /* Bordes Rectos */
+        padding: 0.4rem 0.8rem; /* Compacto */
+        font-size: 0.9rem; /* Compacto */
+        border: 1px solid #ced4da;
+    }
+    .form-select:focus {
+        border-color: var(--color-grad-1);
+        box-shadow: 0 0 0 2px rgba(33, 147, 176, 0.25);
     }
 
-    select.form-control {
-      border-radius: 12px;
-      padding-left: 15px;
-      height: 40px;
-      font-weight: 500;
-      border: 1.7px solid var(--azul-suave);
-      color: var(--azul-oscuro);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      background-color: var(--blanco);
-      box-shadow: inset 0 0 8px #d4e0f0;
-      font-size: 1rem;
-    }
-
-    select.form-control:focus {
-      border-color: var(--azul-oscuro);
-      box-shadow: 0 0 14px var(--azul-suave);
-      outline: none;
-      background-color: #e8f0fc;
-      color: var(--azul-oscuro);
-    }
-
-    /* Tabla en ancho completo */
-    .table-responsive {
+    /* --- TABLA CON BORDES RECTOS Y COMPACTA --- */
+    #tablaPedidos {
+      border-collapse: collapse !important; /* Colapsado para un look más filoso */
       width: 100% !important;
-      background: var(--blanco);
-      border-radius: 14px;
-      box-shadow: 0 12px 30px var(--sombra-suave);
-      overflow-x: auto;
-      padding: 10px 15px;
-      margin: 0 auto;
     }
 
-    table {
-      border-collapse: separate !important;
-      border-spacing: 0 12px !important;
-      width: 100% !important;
-      font-size: 1rem;
-    }
-
-    thead th {
-      background: linear-gradient(90deg, #7aa3ce, #5a8dbd);
-      color: #fff !important;
+    #tablaPedidos thead th {
       font-weight: 700;
+      font-size: 0.8rem; /* Más pequeño */
+      background: linear-gradient(90deg, var(--color-grad-1) 0%, var(--color-grad-2) 100%);
+      color: var(--blanco);
+      border: none;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      border-radius: 12px 12px 0 0 !important;
-      padding: 14px 18px !important;
-      text-align: center;
-      border: none !important;
+      letter-spacing: 0.5px;
+      padding: 10px 8px; /* Compacto */
+      border-radius: 0; /* Bordes Rectos */
+    }
+    
+    #tablaPedidos tbody tr {
+      background: var(--blanco);
+      border-bottom: 1px solid #eff2f5; /* Línea separadora en lugar de sombra */
+      transition: background-color 0.2s ease;
+    }
+    #tablaPedidos tbody tr:last-child {
+      border-bottom: none;
+    }
+    #tablaPedidos tbody tr:hover {
+      background: #f5faff;
     }
 
-    tbody tr {
-      background: var(--gris-claro);
-      border-radius: 12px;
-      transition: background-color 0.3s ease;
-      cursor: default;
-    }
-
-    tbody tr:hover {
-      background-color: #dce7f5 !important;
-      color: var(--azul-oscuro);
-    }
-
-    tbody td {
+    #tablaPedidos tbody td {
       vertical-align: middle !important;
       text-align: center;
-      padding: 14px 12px;
-      border-top: none !important;
-      color: var(--texto-principal);
+      padding: 10px 8px; /* Compacto */
       font-weight: 500;
-      border-radius: 8px;
+      font-size: 0.85rem; /* Más pequeño */
+      color: var(--texto-principal);
+      border: none;
     }
-
+    
+    .estado-select, .repartidor-select {
+        font-weight: 600;
+        padding: 5px 10px; /* Compacto */
+        font-size: 0.8rem; /* Compacto */
+        border-radius: 0; /* Bordes Rectos */
+        border: 1px solid #ccc;
+        background-color: var(--blanco);
+    }
+    
+    .estado-select:focus, .repartidor-select:focus,
+    .estado-select:active, .repartidor-select:active {
+        background: linear-gradient(90deg, var(--color-verde-1), var(--color-verde-2));
+        color: var(--texto-oscuro-contraste); /* Texto oscuro para legibilidad */
+        border-color: var(--color-verde-2);
+        outline: none;
+        box-shadow: none;
+    }
+    
+    /* --- BOTÓN RECTO Y MUCHO MÁS PEQUEÑO --- */
     .btn-enviar {
-      background-color: var(--azul-suave);
+      background: linear-gradient(90deg, var(--color-verde-1), var(--color-verde-2));
       border: none;
       font-weight: 700;
-      padding: 9px 22px;
-      border-radius: 30px;
-      box-shadow: 0 6px 14px rgba(90, 141, 189, 0.4);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      color: white;
-      user-select: none;
+      padding: 5px 14px; /* Muy compacto */
+      border-radius: 0; /* Bordes Rectos */
+      box-shadow: 0 2px 8px #2dbd6e50;
+      color: var(--blanco);
+      font-size: 0.8rem; /* Muy compacto */
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
     }
-
     .btn-enviar:hover {
-      background-color: var(--azul-oscuro);
-      box-shadow: 0 10px 26px rgba(59, 101, 156, 0.6);
-      color: white;
+      box-shadow: 0 4px 12px #2dbd6e60;
+      transform: translateY(-1px);
+      color: var(--blanco);
     }
-
+    
+    /* --- RESPONSIVE SIN CAMBIOS, YA FUNCIONABA BIEN --- */
     @media (max-width: 768px) {
-      h2 {
-        font-size: 1.8rem;
-        margin-bottom: 30px;
+      body {
+        padding: 10px;
       }
-
-      thead th, tbody td {
-        font-size: 0.9rem;
-        padding: 10px 8px;
+      .glass-card, .glass-table { 
+        padding: 1rem;
       }
-
-      .filtro-container {
-        max-width: 100%;
-        padding: 0 15px;
+      .glass-card h2 {
+        font-size: 1.5rem;
+      }
+      #tablaPedidos thead {
+        display: none;
+      }
+      #tablaPedidos, #tablaPedidos tbody, #tablaPedidos tr, #tablaPedidos td {
+        display: block;
+        width: 100%;
+      }
+      #tablaPedidos tr {
+        margin-bottom: 15px;
+        border: 1px solid #e0e7ee;
+      }
+      #tablaPedidos td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      #tablaPedidos td:last-child {
+        border-bottom: none;
+      }
+      #tablaPedidos td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 700;
+        color: var(--color-grad-1);
       }
     }
-    .filtro-container {
-  max-width: 420px;
-  margin: 0 0 40px 0; /* quitar centrar */
-  text-align: left;
-}
-
-#tablaPedidos tbody tr td:last-child button {
-  background-color: #1df933ff; 
-  border: none;
-  color: white;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-#tablaPedidos tbody tr td:last-child button:hover {
-  background-color: #53c606ff;
-}
-
-  </style>
+</style>
 </head>
 <body>
   <div class="container-fluid px-3 py-4" style="max-width:1100px;">

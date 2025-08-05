@@ -113,55 +113,95 @@
       border: 1.5px solid #b2ebf2;
     }
 
-    #formProducto .form-control,
-    #formProducto .form-control-file,
-    #formProducto textarea,
-    #formProducto select.form-control {
-      border: 1.8px solid var(--borde-input);
-      border-radius: 12px;
-      color: var(--texto-principal);
-      font-weight: 500;
-      font-size: 1rem;
-      padding: 12px 16px;
-      margin-bottom: 18px;
-      background-color: var(--fondo-input);
-      box-shadow: inset 0 0 8px #e4e9f0;
-      transition: border 0.3s, box-shadow 0.3s;
-    }
+/* === NUEVO DISEÑO MEJORADO Y COMPACTO PARA EL FORMULARIO === */
 
-    #formProducto .form-control::placeholder,
-    #formProducto textarea::placeholder {
-      color: var(--texto-secundario);
-      font-style: italic;
-    }
+:root {
+  /* Variables consistentes con las plantillas */
+  --azul-resaltado: #0d6efd;
+  --blanco-puro: #ffffff;
+  --fondo-claro: #f8f9fa; /* Un gris muy sutil para los inputs */
+  --borde-suave: #dee2e6;
+  --texto-oscuro: #212529;
+  --texto-secundario: #6c757d;
+  --duracion-transicion: 0.2s;
+}
 
-    #formProducto .form-control:focus,
-    #formProducto textarea:focus,
-    #formProducto select.form-control:focus {
-      border-color: var(--color-acento);
-      box-shadow: 0 0 10px var(--color-acento);
-      background-color: #eef5fb;
-    }
+#formProducto {
+  background: var(--blanco-puro);
+  border: 1px solid var(--borde-suave);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07); /* Sombra más pronunciada para destacar */
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: none;
+}
 
-    #btnGuardar {
-      background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%);
-      border: none;
-      font-weight: 700;
-      font-size: 1.08rem;
-      width: 100%;
-      padding: 14px;
-      color: var(--color-blanco);
-      border-radius: 14px;
-      box-shadow: 0 6px 20px #aacde880;
-      transition: background 0.3s, box-shadow 0.3s;
-      letter-spacing: 1px;
-    }
+/* Estilo para todas las etiquetas (labels) dentro del formulario */
+#formProducto label {
+  color: var(--texto-secundario);
+  font-weight: 500;
+  margin-bottom: .5rem;
+  font-size: 0.9rem;
+}
 
-    #btnGuardar:hover {
-      background: linear-gradient(90deg, #6dd5ed 0%, #2193b0 100%);
-      box-shadow: 0 8px 25px #aacde8aa;
-      color: #2193b0;
-    }
+/* Estilo unificado para todos los campos de entrada */
+#formProducto .form-control,
+#formProducto .form-select, /* Bootstrap 5 usa form-select */
+#formProducto select.form-control { /* Compatibilidad con versiones anteriores */
+  border: 1px solid var(--borde-suave);
+  border-radius: 8px;
+  color: var(--texto-oscuro);
+  font-weight: 500;
+  background-color: var(--fondo-claro);
+  box-shadow: none;
+  transition: border-color var(--duracion-transicion) ease, box-shadow var(--duracion-transicion) ease;
+}
+#formProducto .form-control-file { /* Estilo específico para el input de archivo */
+    border: 1px solid var(--borde-suave);
+    border-radius: 8px;
+    padding: .5rem .75rem;
+}
+
+#formProducto .form-control::placeholder,
+#formProducto textarea::placeholder {
+  color: #adb5bd;
+  font-style: normal;
+}
+
+/* Efecto de foco para todos los campos */
+#formProducto .form-control:focus,
+#formProducto .form-select:focus,
+#formProducto select:focus {
+  border-color: var(--azul-resaltado);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+  background-color: var(--blanco-puro);
+}
+
+/* Botón de Guardar */
+#btnGuardar {
+  background: var(--azul-resaltado);
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+  padding: .85rem 1rem;
+  color: var(--blanco-puro);
+  border-radius: 8px;
+  margin-top: 1rem; /* Espacio antes del botón */
+  box-shadow: 0 4px 14px 0 rgba(13, 110, 253, 0.3);
+  transition: all var(--duracion-transicion) ease;
+  letter-spacing: 0.5px;
+}
+
+#btnGuardar:hover {
+  background: #0b5ed7; /* Azul más oscuro */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px 0 rgba(13, 110, 253, 0.4);
+}
+
+/* Estructura del formulario en filas usando Bootstrap (esto requiere que el HTML use 'row' y 'col') */
+#formProducto .row > [class*='col-'] {
+    margin-bottom: 1rem;
+}
 
     .card.tabla-card {
       border-radius: 18px;
@@ -253,63 +293,77 @@
 <body class="hold-transition sidebar-mini">
   <div class="main-wrapper">
     <h2>Gestión de Productos</h2>
-    <div class="form-container">
-      <form id="formProducto" enctype="multipart/form-data" class="card">
-        <input type="hidden" name="id_producto" id="id_producto" />
-        <input type="hidden" name="imagen_actual" id="imagen_actual" />
+   <!-- === FORMULARIO RECOMENDADO (REEMPLAZAR EN EL HTML) === -->
+<div class="form-container">
+  <form id="formProducto" enctype="multipart/form-data" class="card">
+    <input type="hidden" name="id_producto" id="id_producto" />
+    <input type="hidden" name="imagen_actual" id="imagen_actual" />
 
-        <div class="form-group">
-          <select id="tipo_producto" class="form-control" name="tipo_producto" style="height: 52px; font-size: 1.18rem; padding: 12px 18px;">
-            <option value="Normal">Producto Normal</option>
-            <option value="Evento">Producto de Evento</option>
-          </select>
+    <!-- Fila 1 -->
+    <div class="row">
+      <div class="col-md-6">
+        <label for="tipo_producto">Tipo de Producto</label>
+        <select id="tipo_producto" name="tipo_producto" class="form-select">
+          <option value="Normal">Producto Normal</option>
+          <option value="Evento">Producto de Evento</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="nombre">Nombre del Producto</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Ej: Hamburguesa Doble" class="form-control" />
+        <div id="error-nombre" class="text-danger small mt-1"></div>
+      </div>
+    </div>
+
+    <!-- Campos de Evento (se muestran/ocultan con JS) -->
+    <div id="grupo_evento_existente" style="display:none;" class="mb-3">
+      <label for="evento_existente">Seleccionar Evento Existente (opcional)</label>
+      <select id="evento_existente" class="form-select">
+          <option value="">-- Autocompletar con evento existente --</option>
+      </select>
+    </div>
+    <div class="row">
+        <div class="col-md-8" id="grupo_evento" style="display:none;">
+          <label for="nombre_evento">Nombre del Evento (si es nuevo)</label>
+          <input type="text" name="nombre_evento" id="nombre_evento" placeholder="Ej: Festival de Verano" class="form-control" />
+          <div id="error-nombre_evento" class="text-danger small mt-1"></div>
         </div>
-<div class="form-group" id="grupo_evento_existente" style="display:none;">
-  <label for="evento_existente">Seleccionar Evento Existente (opcional):</label>
-<select id="evento_existente" class="form-control" style="height: 52px; font-size: 1.18rem; padding: 12px 18px;">
-    <option value="">-- Selecciona un evento --</option>
-  </select>
-</div>
-        <div class="form-group" id="grupo_fecha_evento" style="display:none;">
+        <div class="col-md-4" id="grupo_fecha_evento" style="display:none;">
+          <label for="fecha_evento">Fecha</label>
           <input type="date" name="fecha_evento" id="fecha_evento" class="form-control" />
           <div id="error-fecha_evento" class="text-danger small mt-1"></div>
         </div>
-
-        <div class="form-group" id="grupo_evento" style="display:none;">
-          <input type="text" name="nombre_evento" id="nombre_evento" placeholder="Nombre del Evento" class="form-control" />
-          <div id="error-nombre_evento" class="text-danger small mt-1"></div>
-        </div>
-
-
-
-        <div class="form-group">
-          <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" />
-          <div id="error-nombre" class="text-danger small mt-1"></div>
-        </div>
-
-        <div class="form-group">
-          <textarea name="descripcion" id="descripcion" placeholder="Descripción" class="form-control" rows="3"></textarea>
-          <div id="error-descripcion" class="text-danger small mt-1"></div>
-        </div>
-
-        <div class="form-group">
-          <input type="number" name="precio" id="precio" placeholder="Precio" class="form-control" step="0.01" />
-          <div id="error-precio" class="text-danger small mt-1"></div>
-        </div>
-
-        <div class="form-group">
-          <input type="number" name="tiempo_preparacion" id="tiempo_preparacion" placeholder="Tiempo (min)" class="form-control" />
-          <div id="error-tiempo_preparacion" class="text-danger small mt-1"></div>
-        </div>
-
-        <div class="form-group">
-          <input type="file" name="imagen" id="imagen" class="form-control-file" />
-          <div id="error-imagen" class="text-danger small mt-1"></div>
-        </div>
-
-        <button type="button" class="btn" id="btnGuardar">Guardar</button>
-      </form>
     </div>
+    
+    <div class="mb-3">
+      <label for="descripcion">Descripción</label>
+      <textarea name="descripcion" id="descripcion" placeholder="Breve descripción del producto..." class="form-control" rows="2"></textarea>
+      <div id="error-descripcion" class="text-danger small mt-1"></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <label for="precio">Precio ($)</label>
+        <input type="number" name="precio" id="precio" placeholder="Ej: 9.99" class="form-control" step="0.01" />
+        <div id="error-precio" class="text-danger small mt-1"></div>
+      </div>
+      <div class="col-md-6">
+        <label for="tiempo_preparacion">Tiempo de Preparación (min)</label>
+        <input type="number" name="tiempo_preparacion" id="tiempo_preparacion" placeholder="Ej: 20" class="form-control" />
+        <div id="error-tiempo_preparacion" class="text-danger small mt-1"></div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="imagen">Imagen del Producto</label>
+      <input type="file" name="imagen" id="imagen" class="form-control" />
+      <div id="error-imagen" class="text-danger small mt-1"></div>
+    </div>
+
+    <button type="button" class="btn" id="btnGuardar">Guardar</button>
+  </form>
+</div>
+<!-- ======================================================= -->
     <div class="card tabla-card">
       <table id="tabla" class="table table-bordered table-striped"></table>
     </div>

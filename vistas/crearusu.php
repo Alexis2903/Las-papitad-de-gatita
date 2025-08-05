@@ -1,71 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro de Cliente</title>
 
-  <!-- AdminLTE -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css" />
   <!-- Bootstrap 5 -->
-
-    <script src="plugins/bootstrap-5.3.7/css/bootstrap.min.css"></script>
+  <link rel="stylesheet" href="plugins/bootstrap-5.3.7/css/bootstrap.min.css" />
   <!-- FontAwesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
   <!-- Fuente Nunito -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <style>
+ <style>
+    /* ===================================================================
+       DISEÑO DE REGISTRO CON FONDO CLARO (BASADO EN ESTILO LOGIN)
+       =================================================================== */
+    
     :root {
-      --azul-principal: #357ABD;
-      --azul-oscuro: #2a5e91;
-      --gris-fondo: #f9fafb;
-      --blanco: #fff;
-      --sombra-suave: rgba(53, 122, 189, 0.15);
+      --color-grad-1: #2193b0;
+      --color-grad-2: #6dd5ed;
+      --blanco: #ffffff;
       --texto-principal: #34495e;
+      --texto-secundario: #6c757d;
+      --borde-input: #b2ebf2;
+      --sombra-suave: rgba(33, 147, 176, 0.15);
+      --fondo-pagina: #f8f9fa; /* Variable para el nuevo fondo claro */
     }
 
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
+      /* --- ¡AQUÍ ESTÁ EL CAMBIO! --- */
+      background-color: var(--fondo-pagina); 
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: 'Nunito', sans-serif;
-      padding: 0;
-      margin: 0;
-      color: var(--texto-principal);
-      user-select: none;
+      padding: 20px;
       animation: fadeIn 1s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Fondo decorativo con formas */
-    body::before {
-      content: '';
-      position: absolute;
-      top: -120px;
-      left: -120px;
-      width: 340px;
-      height: 340px;
-      background: radial-gradient(circle, #2193b0 60%, #6dd5ed 100%);
-      opacity: 0.18;
-      border-radius: 50%;
-      z-index: 0;
-    }
-    body::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      right: -100px;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, #6dd5ed 60%, #2193b0 100%);
-      opacity: 0.15;
-      border-radius: 50%;
-      z-index: 0;
     }
 
     @keyframes fadeIn {
@@ -74,232 +46,198 @@
     }
 
     .register-box {
-      width: 480px;
-      max-width: 98vw;
-      background: rgba(255,255,255,0.92);
-      border-radius: 28px;
-      box-shadow: 0 16px 48px var(--sombra-suave);
-      padding: 32px 28px 24px 28px;
-      transition: box-shadow 0.3s ease;
-      backdrop-filter: blur(10px);
+      width: 100%;
+      max-width: 480px;
+      background: var(--blanco); /* Cambiado a blanco sólido para mejor contraste */
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.07); /* Sombra más sutil para fondo claro */
+      padding: 20px;
+      padding-top: 60px; /* Espacio para el icono que sobresale */
       position: relative;
-      overflow: hidden;
-      z-index: 1;
-      animation: fadeIn 1.2s;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .register-box:hover {
-      box-shadow: 0 24px 64px rgba(53, 122, 189, 0.28);
-      transform: translateY(-2px) scale(1.01);
+      text-align: center;
+      border: 1px solid #dee2e6; /* Borde sutil para definir la caja */
     }
 
-    .register-box .icon-user {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-      animation: bounceIn 1.2s;
-    }
-    @keyframes bounceIn {
-      0% { transform: scale(0.7); opacity: 0; }
-      60% { transform: scale(1.15); opacity: 1; }
-      80% { transform: scale(0.95); }
-      100% { transform: scale(1); }
-    }
-    .register-box .icon-user i {
-      font-size: 4.2rem;
-      color: #fff;
-      background: linear-gradient(135deg, #2193b0 60%, #6dd5ed 100%);
+    /* Icono superior que reemplaza la imagen */
+    .register-icon {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, var(--color-grad-1) 60%, var(--color-grad-2) 100%);
       border-radius: 50%;
-      padding: 22px;
-      box-shadow: 0 4px 18px var(--sombra-suave);
-      border: 4px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -45px; /* Mitad del icono sobresale */
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 8px 20px rgba(33, 147, 176, 0.3);
+      border: 4px solid var(--blanco);
+    }
+    .register-icon i {
+      color: var(--blanco);
+      font-size: 2.5rem;
     }
 
     .register-box h3 {
-      font-weight: 900;
-      color: var(--azul-principal);
-      margin-bottom: 10px;
-      text-align: center;
-      font-size: 2.1rem;
-      user-select: none;
-      letter-spacing: 1px;
+      font-weight: 700;
+      color: var(--color-grad-1);
+      margin-bottom: 8px;
+      font-size: 1.8rem;
     }
 
-    p.text-center {
-      font-weight: 500;
-      color: var(--azul-oscuro);
-      margin-bottom: 24px;
-      font-size: 1.08rem;
-    }
-
-    #mensaje {
-      margin-bottom: 20px;
-      font-weight: 600;
-      font-size: 0.95rem;
+    .register-box p.register-box-msg {
+      color: var(--texto-principal);
+      margin-bottom: 25px;
+      font-size: 1rem;
     }
 
     .form-control {
-      border-radius: 16px !important;
-      border: 2px solid #b2ebf2 !important;
-      padding: 15px 20px !important;
-      font-size: 1.05rem;
-      font-weight: 500;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
-      user-select: text;
-      box-shadow: 0 2px 8px var(--sombra-suave);
-      background: rgba(255,255,255,0.98);
+      border-radius: 10px !important;
+      border: 1px solid var(--borde-input) !important;
+      padding: 12px 15px !important;
+      font-size: 0.95rem;
+      box-shadow: none !important;
     }
-
     .form-control:focus {
-      border-color: var(--azul-principal) !important;
-      box-shadow: 0 0 10px rgba(53, 122, 189, 0.4) !important;
-      outline: none;
+      border-color: var(--color-grad-1) !important;
+      box-shadow: 0 0 0 3px rgba(33, 147, 176, 0.2) !important;
     }
 
     .input-group-text {
-      background: linear-gradient(135deg, #2193b0 60%, #6dd5ed 100%) !important;
-      border-radius: 0 16px 16px 0 !important;
-      color: #fff !important;
+      background: linear-gradient(135deg, var(--color-grad-1) 60%, var(--color-grad-2) 100%) !important;
+      border-radius: 0 10px 10px 0 !important;
+      color: var(--blanco) !important;
       border: none !important;
-      font-size: 1rem;
-      user-select: none;
-      box-shadow: 0 2px 8px var(--sombra-suave);
-      padding: 0.375rem 0.75rem !important;
-    }
-    .input-group-text i {
-      font-size: 1.1rem !important;
     }
 
-    button.btn-primary.btn-block {
-      background: linear-gradient(135deg, #2193b0 60%, #6dd5ed 100%);
+    .btn-primary.btn-block {
+      background: linear-gradient(135deg, var(--color-grad-1) 60%, var(--color-grad-2) 100%);
       border: none;
-      border-radius: 16px;
-      padding: 15px 0;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: 1px;
-      transition: background 0.3s, box-shadow 0.3s;
-      user-select: none;
-      box-shadow: 0 6px 15px rgba(53, 122, 189, 0.35);
-    }
-
-    button.btn-primary.btn-block:hover,
-    button.btn-primary.btn-block:focus {
-      background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
-      box-shadow: 0 8px 25px rgba(42, 94, 145, 0.6);
-      outline: none;
-      transform: translateY(-2px) scale(1.03);
-    }
-
-    p a {
-      color: var(--azul-principal);
+      border-radius: 10px;
+      padding: 12px 0;
       font-weight: 700;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      user-select: none;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 5px 15px rgba(33, 147, 176, 0.3);
+      transition: all 0.3s ease;
+    }
+    .btn-primary.btn-block:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(33, 147, 176, 0.4);
     }
 
-    p a:hover,
-    p a:focus {
-      color: var(--azul-oscuro);
-      text-decoration: underline;
-      outline: none;
-    }
-
-    /* Mensajes de error */
-    .text-danger {
-      font-size: 0.85rem;
+    .login-link a {
+      color: var(--color-grad-1);
       font-weight: 600;
-      margin-top: -10px;
-      margin-bottom: 10px;
-      user-select: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .login-link a:hover {
+      text-decoration: underline;
     }
 
+    .text-danger {
+      font-size: 0.8rem;
+      text-align: left;
+      font-weight: 600;
+      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+    #mensaje.alert {
+      font-size: 0.9rem;
+      padding: 0.75rem;
+    }
+    
     @media (max-width: 576px) {
-      .register-box {
-        padding: 18px 4px;
-      }
-
-      .register-box h3 {
-        font-size: 1.1rem;
-      }
-
-      button.btn-primary.btn-block {
-        font-size: 0.9rem;
-        padding: 8px 0;
-      }
+        .register-box {
+            margin: 20px 0;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .register-box h3 {
+            font-size: 1.6rem;
+        }
     }
   </style>
 </head>
-
 <body>
-  <div class="register-box" role="main" aria-label="Formulario de registro de cliente">
-    <div class="icon-user"><i class="fas fa-user-plus" aria-hidden="true"></i></div>
-    <h3>Registro de Cliente</h3>
-    <p class="text-center">Completa los datos para crear tu cuenta</p>
 
-    <div id="mensaje" class="alert alert-danger d-none text-center" role="alert" aria-live="polite"></div>
+  <div class="register-box" role="main">
+    <div class="register-icon" aria-hidden="true">
+      <i class="fas fa-user-plus"></i>
+    </div>
+    
+    <h3>Crear una Cuenta</h3>
+    <p class="register-box-msg">Completa tus datos para registrarte.</p>
+
+    <div id="mensaje" class="alert d-none text-center" role="alert"></div>
 
     <form id="formRegistroCliente" novalidate>
-      <div class="row g-2 mb-2">
-        <div class="col-6">
-          <div class="input-group mb-2">
-            <input type="text" name="nombres" class="form-control" placeholder="Nombres" required aria-describedby="error-nombres" />
-            <span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
-          </div> </br>
-          <div id="error-nombres" class="text-danger small mb-2" aria-live="assertive"></div>
-          <div class="input-group mb-2">
-            <input type="text" name="telefono" class="form-control" placeholder="Teléfono" required aria-describedby="error-telefono" />
-            <span class="input-group-text"><i class="fas fa-phone" aria-hidden="true"></i></span>
+      <div class="row g-3">
+        <!-- Nombres -->
+        <div class="col-md-6">
+          <div class="input-group">
+            <input type="text" name="nombres" class="form-control" placeholder="Nombres" required />
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
           </div>
-          <div id="error-telefono" class="text-danger small mb-2" aria-live="assertive"></div>
+          <div id="error-nombres" class="text-danger"></div>
         </div>
-        <div class="col-6">
-          <div class="input-group mb-2">
-            <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required aria-describedby="error-apellidos" />
-            <span class="input-group-text"><i class="fas fa-user-tag" aria-hidden="true"></i></span>
-          </div> </br>
-          <div id="error-apellidos" class="text-danger small mb-2" aria-live="assertive"></div>
-          <div class="input-group mb-2">
-            <input type="text" name="usuario" class="form-control" placeholder="Usuario" required aria-describedby="error-usuario" />
-            <span class="input-group-text"><i class="fas fa-user-circle" aria-hidden="true"></i></span>
+
+        <!-- Apellidos -->
+        <div class="col-md-6">
+          <div class="input-group">
+            <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required />
+            <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
           </div>
-          <div id="error-usuario" class="text-danger small mb-2" aria-live="assertive"></div>
+          <div id="error-apellidos" class="text-danger"></div>
         </div>
-      </div>
-      <div class="input-group mb-3">
-        <input type="password" name="contrasena" class="form-control" placeholder="Contraseña" required aria-describedby="error-contrasena" />
-        <span class="input-group-text"><i class="fas fa-lock" aria-hidden="true"></i></span>
-      </div>
-      <div id="error-contrasena" class="text-danger small mb-2" aria-live="assertive"></div>
-      <div class="row mb-2">
+
+        <!-- Teléfono -->
+        <div class="col-md-6">
+          <div class="input-group">
+            <input type="text" name="telefono" class="form-control" placeholder="Teléfono" required />
+            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+          </div>
+          <div id="error-telefono" class="text-danger"></div>
+        </div>
+
+        <!-- Usuario -->
+        <div class="col-md-6">
+          <div class="input-group">
+            <input type="text" name="usuario" class="form-control" placeholder="Usuario" required />
+            <span class="input-group-text"><i class="fas fa-user-circle"></i></span>
+          </div>
+          <div id="error-usuario" class="text-danger"></div>
+        </div>
+
+        <!-- Contraseña -->
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block" aria-label="Registrar cuenta de cliente">Registrar</button>
+           <div class="input-group">
+            <input type="password" name="contrasena" class="form-control" placeholder="Contraseña" required />
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+          </div>
+          <div id="error-contrasena" class="text-danger"></div>
         </div>
+      </div>
+
+      <!-- Botón de Registro -->
+      <div class="d-grid mt-3">
+        <button type="submit" class="btn btn-primary btn-block">Registrarme</button>
       </div>
     </form>
-    <!-- La lógica de redirección y JS se encuentra ahora en crearusu.js -->
 
-
-    <div id="mensaje" class="alert d-none text-center" role="alert" aria-live="polite"></div>
-
-    <p class="mt-3 mb-0 text-center">
-      <a href="logeo.php" aria-label="Ir a página de inicio de sesión">
-        <i class="fas fa-sign-in-alt" aria-hidden="true"></i> ¿Ya tienes una cuenta? Inicia sesión
+    <!-- Enlace para Iniciar Sesión -->
+    <p class="mt-4 mb-0 login-link">
+      <a href="logeo.php">
+        <i class="fas fa-sign-in-alt"></i> ¿Ya tienes una cuenta? Inicia sesión
       </a>
     </p>
   </div>
 
   <!-- Scripts -->
   <script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/bootstrap-5.3.7/js/bootstrap.bundle.min.js"></script>
-<script src="dist/js/adminlte.min.js"></script>
+  <script src="plugins/bootstrap-5.3.7/js/bootstrap.bundle.min.js"></script>
   <script src="../js/crearusu.js"></script>
 </body>
-
 </html>
