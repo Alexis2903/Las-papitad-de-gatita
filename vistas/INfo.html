@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Información General | AdminLTE</title>
+
+  <!-- Estilos de Bootstrap -->
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Estilos de AdminLTE -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Estilos de DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+    
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Inicio</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Acerca de</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Contacto</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <a href="#" class="brand-link">
+        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">AdminLTE</span>
+      </a>
+
+      <div class="sidebar">
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-home"></i>
+                <p>Información General</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-info-circle"></i>
+                <p>Sobre el Proyecto</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Página Informativa</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Bienvenido a la Información General</h3>
+                </div>
+                <div class="card-body">
+                  <p>Esta es una página informativa simple utilizando los plugins de **AdminLTE**. A continuación, encontrarás algunos detalles:</p>
+                  <ul>
+                    <li><strong>Plugin utilizado:</strong> Bootstrap, Font Awesome, AdminLTE.</li>
+                    <li><strong>Estilo:</strong> Diseño moderno y fácil de personalizar.</li>
+                    <li><strong>Funcionalidades:</strong> Barra lateral, navegación, tarjetas de contenido.</li>
+                  </ul>
+                  <p>Si necesitas más información sobre el uso de AdminLTE, visita la documentación oficial.</p>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-primary"><i class="fas fa-download"></i> Descargar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabla DataTable -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Lista de Usuarios</h3>
+                </div>
+                <div class="card-body">
+                  <table id="example" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Fecha de Registro</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Juan Pérez</td>
+                        <td>juan.perez@email.com</td>
+                        <td>2025-04-01</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Ana Gómez</td>
+                        <td>ana.gomez@email.com</td>
+                        <td>2025-04-02</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Carlos López</td>
+                        <td>carlos.lopez@email.com</td>
+                        <td>2025-04-03</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>María Díaz</td>
+                        <td>maria.diaz@email.com</td>
+                        <td>2025-04-04</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>Pedro Sánchez</td>
+                        <td>pedro.sanchez@email.com</td>
+                        <td>2025-04-05</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <strong>Copyright &copy; 2025 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> Todos los derechos reservados.
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="dist/js/adminlte.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("#example").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
+    });
+  </script>
+</body>
+</html>
